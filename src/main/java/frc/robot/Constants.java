@@ -32,7 +32,7 @@ public final class Constants {
   }
 
   public static class robotConstants{
-    public static int MOVE_SPEED = 8; //4 is minimum to function, the higher the value the slower the robot
+    public static int MOVE_SPEED = 16; //4 is minimum to function, the higher the value the slower the robot
     public static double CAM_SPEED = 0.10;
     public static int fieldCentricMode = 0;
   }
