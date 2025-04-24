@@ -116,5 +116,14 @@ public class DriveTrain extends SubsystemBase {
         else {
             backLeftMotorAngle.set(0);
         }
-    }               
+    }   
+    public static void setA(double angle) {
+        if ((blmEncoder.getPosition() % 1)/360 - angle <= 180) {
+            backLeftMotorAngle.set(Constants.SwerveConstants.AngleChange);
+        }
+        if (Constants.SwerveConstants.turnThreshold() >= (blmEncoder.getPosition() % 1)/360 - angle >= 180) {
+            backLeftMotorAngle.set(-Constants.SwerveConstants.AngleChange);
+        }    
+    }            
 }
+
