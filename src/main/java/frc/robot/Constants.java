@@ -40,7 +40,6 @@ public final class Constants {
   public static class SwerveConstants {
     public static double turnThreshold = 0.05; //requires testing to find good value (non jittery but as low as possible)
     public static double AngleChange = 0.05; // value must be between 0,1 controls how fast wheels change angle, currently very low to prevent failure
-
   }
 
   public static class OperatorConstants {
