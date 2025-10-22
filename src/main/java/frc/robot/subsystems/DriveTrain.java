@@ -9,15 +9,15 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 public class DriveTrain extends SubsystemBase {
     
-    static SparkMax frontRightMotor = new SparkMax(Constants.driveConstants.FRONT_RIGHT_MOTOR, MotorType.kBrushless);
-    static SparkMax frontLeftMotor = new SparkMax(Constants.driveConstants.FRONT_LEFT_MOTOR, MotorType.kBrushless);
-    static SparkMax frontRightMotorAngle = new SparkMax(Constants.driveConstants.FRONT_RIGHT_MOTOR_ANGLE, MotorType.kBrushless);
-    static SparkMax frontLeftMotorAngle = new SparkMax(Constants.driveConstants.FRONT_LEFT_MOTOR_ANGLE, MotorType.kBrushless);
+    public static SparkMax frontRightMotor = new SparkMax(Constants.driveConstants.FRONT_RIGHT_MOTOR, MotorType.kBrushless);
+    public static SparkMax frontLeftMotor = new SparkMax(Constants.driveConstants.FRONT_LEFT_MOTOR, MotorType.kBrushless);
+    public static SparkMax frontRightMotorAngle = new SparkMax(Constants.driveConstants.FRONT_RIGHT_MOTOR_ANGLE, MotorType.kBrushless);
+    public static SparkMax frontLeftMotorAngle = new SparkMax(Constants.driveConstants.FRONT_LEFT_MOTOR_ANGLE, MotorType.kBrushless);
 
-    static SparkMax backRightMotor = new SparkMax(Constants.driveConstants.BACK_RIGHT_MOTOR, MotorType.kBrushless);
-    static SparkMax backLeftMotor = new SparkMax(Constants.driveConstants.BACK_LEFT_MOTOR, MotorType.kBrushless);
-    static SparkMax backRightMotorAngle = new SparkMax(Constants.driveConstants.BACK_RIGHT_MOTOR_ANGLE, MotorType.kBrushless);
-    static SparkMax backLeftMotorAngle = new SparkMax(Constants.driveConstants.BACK_LEFT_MOTOR_ANGLE, MotorType.kBrushless);
+    public static SparkMax backRightMotor = new SparkMax(Constants.driveConstants.BACK_RIGHT_MOTOR, MotorType.kBrushless);
+    public static SparkMax backLeftMotor = new SparkMax(Constants.driveConstants.BACK_LEFT_MOTOR, MotorType.kBrushless);
+    public static SparkMax backRightMotorAngle = new SparkMax(Constants.driveConstants.BACK_RIGHT_MOTOR_ANGLE, MotorType.kBrushless);
+    public static SparkMax backLeftMotorAngle = new SparkMax(Constants.driveConstants.BACK_LEFT_MOTOR_ANGLE, MotorType.kBrushless);
 
     static ADIS16448_IMU gyro = new ADIS16448_IMU(); // ADIS16448 plugged into the MXP port
 
@@ -69,6 +69,49 @@ public class DriveTrain extends SubsystemBase {
            backLeftMotor.set(0);
         }
     }
+    public static void FRMAsetV(double speed) {
+        if (speed >= -1 && speed <= 1)
+        {
+            frontRightMotorAngle.set(speed);
+        }
+         else
+        {
+            frontRightMotorAngle.set(0);
+        }
+    }
+
+    public static void FLMAsetV(double speed) {
+        if (speed >= -1 && speed <= 1)
+        {
+            frontLeftMotorAngle.set(speed);
+        }
+         else
+        {
+            frontLeftMotorAngle.set(0);
+        }
+    }
+
+    public static void BRMAsetV(double speed) {
+        if (speed >= -1 && speed <= 1)
+        {
+            backRightMotorAngle.set(speed);
+        }
+         else
+        {
+            backRightMotorAngle.set(0);
+        }
+    }
+
+    public static void BLMAsetV(double speed) {
+        if (speed >= -1 && speed <= 1)
+        {
+            backLeftMotorAngle.set(speed);
+        }
+         else
+        {
+            backLeftMotorAngle.set(0);
+        }
+    }
 
     // input angle measure variables and find out how to measure them
 
@@ -116,14 +159,6 @@ public class DriveTrain extends SubsystemBase {
         else {
             backLeftMotorAngle.set(0);
         }
-    }   
-    public static void setA(double angle) {
-        if ((blmEncoder.getPosition() % 1)/360 - angle <= 180) {
-            backLeftMotorAngle.set(Constants.SwerveConstants.AngleChange);
-        }
-        if (Constants.SwerveConstants.turnThreshold() >= (blmEncoder.getPosition() % 1)/360 - angle >= 180) {
-            backLeftMotorAngle.set(-Constants.SwerveConstants.AngleChange);
-        }    
-    }            
+    }         
 }
 
