@@ -30,16 +30,6 @@ public class RobotContainer {
   // The robot's subsystems
   private final DriveTrain m_robotDrive = new DriveTrain();
 
-  protected void execute() {
-   SmartDashboard.putNumber("Drive P", Constants.ModuleConstants.drivingP);
-   SmartDashboard.putNumber("Drive I", Constants.ModuleConstants.drivingI);
-   SmartDashboard.putNumber("Drive D", Constants.ModuleConstants.drivingD);
-   
-   SmartDashboard.putNumber("Turn P", Constants.ModuleConstants.turningP);
-   SmartDashboard.putNumber("Turn I", Constants.ModuleConstants.turningI);
-   SmartDashboard.putNumber("Turn D", Constants.ModuleConstants.turningD);
-}
-
   // The driver's controller
   XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
 
