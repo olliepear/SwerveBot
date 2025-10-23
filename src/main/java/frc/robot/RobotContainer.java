@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.SwerveDrive;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ControllerInputs;
 import frc.robot.subsystems.DriveTrain;
@@ -22,10 +20,10 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   public static final DriveTrain DRIVE_TRAIN = new  DriveTrain();
-  public static final frc.robot.commands.SwerveDrive SwerveDrive = new SwerveDrive();
+  public static final frc.robot.subsystems.DriveTrain DriveTrain = new DriveTrain();
   
   public static final ControllerInputs INPUTS = new ControllerInputs();
-  public static final CommandXboxController XBOX_CONTROLLER = new CommandXboxController(OperatorConstants.kDriverControllerPort);
+  public static final CommandXboxController XBOX_CONTROLLER = new CommandXboxController(0);
   
   public static final Servo Y_SERVO = new Servo(0);
   public static final Servo X_SERVO = new Servo(1);
@@ -35,7 +33,7 @@ public class RobotContainer {
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
-      new CommandXboxController(OperatorConstants.kDriverControllerPort);
+      new CommandXboxController(0);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
