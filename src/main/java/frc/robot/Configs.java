@@ -26,7 +26,7 @@ public final class Configs {
                     .velocityConversionFactor(drivingFactor / 60.0); // meters per second
             drivingConfig.closedLoop
                     .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-                    .pid(0, 0, 0)
+                    .pid(Constants.ModuleConstants.drivingP, Constants.ModuleConstants.drivingI, Constants.ModuleConstants.drivingD)
                     .velocityFF(drivingVelocityFeedForward)
                     .outputRange(-1, 1);
 
@@ -39,7 +39,7 @@ public final class Configs {
                     .velocityConversionFactor(turningFactor / 60.0); // radians per second
             turningConfig.closedLoop
                     .feedbackSensor(FeedbackSensor.kAbsoluteEncoder)
-                    .pid(0, 0, 0)
+                    .pid(Constants.ModuleConstants.turningP, Constants.ModuleConstants.turningI, Constants.ModuleConstants.turningD)
                     .outputRange(-1, 1)
                     .positionWrappingEnabled(true)
                     .positionWrappingInputRange(0, turningFactor);
