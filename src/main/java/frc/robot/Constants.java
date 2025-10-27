@@ -49,14 +49,6 @@ public final class Constants {
     public static final double kWheelDiameterMeters = 0.0762;
     public static final double kWheelCircumferenceMeters = kWheelDiameterMeters * Math.PI;
 
-    public static final double turningP = SmartDashboard.getNumber("Turn P", 0.0); 
-    public static final double turningI = SmartDashboard.getNumber("Turn I", 0.0);
-    public static final double turningD = SmartDashboard.getNumber("Turn D", 0.0);
-
-    public static final double drivingP = SmartDashboard.getNumber("Turn P", 0.0);
-    public static final double drivingI = SmartDashboard.getNumber("Turn I", 0.0);
-    public static final double drivingD = SmartDashboard.getNumber("Turn D", 0.0);
-
     public static final double kDrivingMotorReduction = (45.0 * 22) / (kDrivingMotorPinionTeeth * 15);
     public static final double kDriveWheelFreeSpeedRps = (kDrivingMotorFreeSpeedRps * kWheelCircumferenceMeters)
         / kDrivingMotorReduction;
@@ -64,7 +56,7 @@ public final class Constants {
 
   public static final class OIConstants {
     public static final int kDriverControllerPort = 0;
-    public static final double kDriveDeadband = 0.05;
+    public static final double kDriveDeadband = 0.3;
   }
 
   public static final class AutoConstants {
