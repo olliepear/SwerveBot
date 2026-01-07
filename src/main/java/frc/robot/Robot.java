@@ -4,9 +4,14 @@
 
 package frc.robot;
 
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkMax;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+
+
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -14,6 +19,18 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * this project, you must also update the Main.java file in the project.
  */
 public class Robot extends TimedRobot {
+
+  SparkMax M0 = new SparkMax(1, MotorType.kBrushless);
+  SparkMax M1 = new SparkMax(2, MotorType.kBrushless);
+  SparkMax M2 = new SparkMax(3, MotorType.kBrushless);
+  SparkMax M3 = new SparkMax(4, MotorType.kBrushless);
+  SparkMax M4 = new SparkMax(5, MotorType.kBrushless);
+  SparkMax M5 = new SparkMax(6, MotorType.kBrushless);
+  SparkMax M6 = new SparkMax(7, MotorType.kBrushless);
+  SparkMax M7 = new SparkMax(8, MotorType.kBrushless);
+
+  double ampHoursUsed = 0;
+ 
   private Command m_autonomousCommand;
 
   private final RobotContainer m_robotContainer;
@@ -45,7 +62,23 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+
+    Double M0_Current = M0.getOutputCurrent();
+    Double M1_Current = M1.getOutputCurrent();
+    Double M2_Current = M2.getOutputCurrent();
+    Double M3_Current = M3.getOutputCurrent();
+    Double M4_Current = M4.getOutputCurrent();
+    Double M5_Current = M5.getOutputCurrent();
+    Double M6_Current = M6.getOutputCurrent();
+    Double M7_Current = M7.getOutputCurrent();
+
+    Double currentTotal = (M0_Current + M1_Current + M2_Current +  M3_Current + M4_Current + M5_Current + M6_Current + M7_Current);
+    ampHoursUsed = (ampHoursUsed + currentTotal / 180000);
+    System.out.println("Amp Hour Used: " + String.valueOf(ampHoursUsed));
+    System.out.println(String.valueOf(currentTotal));
+
+  }
 
   @Override
   public void testInit() {

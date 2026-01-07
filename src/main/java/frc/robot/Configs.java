@@ -42,7 +42,7 @@ public final class Configs {
                     .pid(0.074, 0, 0)
                     .outputRange(-1, 1)
                     .positionWrappingEnabled(true)
-                    .positionWrappingInputRange(-24 * turningFactor, 24 * turningFactor);
+                    .positionWrappingInputRange(-turningFactor, turningFactor);
         }
     }
 }
