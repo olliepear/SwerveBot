@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
   SparkMax M6 = new SparkMax(7, MotorType.kBrushless);
   SparkMax M7 = new SparkMax(8, MotorType.kBrushless);
 
-  double ampHoursUsed = 0;
+  double ampMinutesUsed = 0;
  
   private Command m_autonomousCommand;
 
@@ -74,8 +74,8 @@ public class Robot extends TimedRobot {
     Double M7_Current = M7.getOutputCurrent();
 
     Double currentTotal = (M0_Current + M1_Current + M2_Current +  M3_Current + M4_Current + M5_Current + M6_Current + M7_Current);
-    ampHoursUsed = (ampHoursUsed + currentTotal / 180000);
-    System.out.println("Amp Hour Used: " + String.valueOf(ampHoursUsed));
+    ampMinutesUsed = (ampMinutesUsed + currentTotal / 3000);
+    System.out.println("Amp Minutes Used: " + String.valueOf(ampMinutesUsed));
     System.out.println(String.valueOf(currentTotal));
 
   }
