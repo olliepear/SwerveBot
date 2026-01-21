@@ -15,10 +15,12 @@ import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Launcher;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
@@ -34,9 +36,13 @@ import java.util.List;
 public class RobotContainer {
   // The robot's subsystems
   private final DriveTrain m_robotDrive = new DriveTrain();
+  private final Launcher m_Launcher = new Launcher();
 
   // The driver's controller
-  XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+  public XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+
+  public double smartAngle = SmartDashboard.getNumber("Angle", 0);
+  public double smartSpeed = SmartDashboard.getNumber("Velocity", 0);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -72,6 +78,18 @@ public class RobotContainer {
         .whileTrue(new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive));
+    new JoystickButton(m_driverController, 0)
+        .whileTrue(new RunCommand(
+            () -> m_Launcher.Launch(SmartDashboard.getNumber("Angle", 0), SmartDashboard.getNumber("Velocity", 0)),
+            m_Launcher));
+    new JoystickButton(m_driverController, 1)
+        .whileTrue(new RunCommand(
+            () -> m_Launcher.ActivateIntake(),
+             m_Launcher));
+    new JoystickButton(m_driverController, 3)
+        .whileTrue(new RunCommand(
+            () -> m_Launcher.Stop(),
+            m_Launcher));
   }
 
   /**

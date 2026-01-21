@@ -60,11 +60,26 @@ public final class Constants {
     public static final boolean kGyroReversed = false;
   }
 
+  public static final class LauncherConstants {
+    public static final int kLeftLaunchMotor = 9;
+    public static final int kRightLaunchMotor = 10;
+    public static final int kAngleMotor = 11;
+    public static final double kIntakeSpeed = 0.4;
+    public static final double kMaxMotorSpeed = 10; //in meters per second
+    public static final double kGroundAngle = 0;
+
+    public static final int ControlModeCount = 2;
+    public static final double angleChangeRate = 0.01;
+    public static final double velocityChangeRate = 0.01;
+
+
+  }
+
   public static final class ModuleConstants {
     // The MAXSwerve module can be configured with one of three pinion gears: 12T,
     // 13T, or 14T. This changes the drive speed of the module (a pinion gear with
     // more teeth will result in a robot that drives faster).
-    public static final int kDrivingMotorPinionTeeth = 14;
+    public static final int kDrivingMotorPinionTeeth = 13;
 
     // Calculations required for driving motor conversion factors and feed forward
     public static final double kDrivingMotorFreeSpeedRps = NeoMotorConstants.kFreeSpeedRpm / 60;

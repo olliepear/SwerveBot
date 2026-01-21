@@ -63,21 +63,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-
-    Double M0_Current = M0.getOutputCurrent();
-    Double M1_Current = M1.getOutputCurrent();
-    Double M2_Current = M2.getOutputCurrent();
-    Double M3_Current = M3.getOutputCurrent();
-    Double M4_Current = M4.getOutputCurrent();
-    Double M5_Current = M5.getOutputCurrent();
-    Double M6_Current = M6.getOutputCurrent();
-    Double M7_Current = M7.getOutputCurrent();
-
-    Double currentTotal = (M0_Current + M1_Current + M2_Current +  M3_Current + M4_Current + M5_Current + M6_Current + M7_Current);
-    ampMinutesUsed = (ampMinutesUsed + currentTotal / 3000);
-    System.out.println("Amp Minutes Used: " + String.valueOf(ampMinutesUsed));
-    System.out.println(String.valueOf(currentTotal));
-
   }
 
   @Override
